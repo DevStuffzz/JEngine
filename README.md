@@ -5,4 +5,4 @@ A simple java Game Engine
 # Examples
 
 1. Pong Clone
-github.com/DevStuffzz/Pong
+https://github.com/DevStuffzz/JEngine

@@ -2,11 +2,13 @@ package com.jengine.engine.io;
 
 
 import com.jengine.engine.ecs.Entity;
+import com.jengine.engine.math.Vector2;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +20,19 @@ public class Canvas extends JPanel implements ImageObserver {
 	private List<Entity> entities;
 	private List<Text> textList;
 
-
-	public Canvas() {
+	public int width, height;
+	
+	public Canvas(int width, int height) {
 		entities = new ArrayList<Entity>();
 		textList = new ArrayList<Text>();
-		this.setDoubleBuffered(true);
+		//this.setDoubleBuffered(true);
 		this.setBackground(new Color(103, 203, 226));
+		this.width = width;
+		this.height = height;
+	}
+	
+	public void setBgImg(Image image) {
+		entities.add(new Entity(new Vector2(0,0), this.width, this.height, image));
 	}
 
 	public void addEntity(Entity e) {
@@ -33,9 +42,13 @@ public class Canvas extends JPanel implements ImageObserver {
 	public void addText(Text t) {
 		textList.add(t);
 	}
-
-
-
+	
+	public void update() {
+		for(Entity e : entities) {
+			e.update();
+		}
+	}
+	
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);

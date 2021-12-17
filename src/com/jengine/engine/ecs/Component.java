@@ -1,9 +1,10 @@
 package com.jengine.engine.ecs;
 
 import com.jengine.engine.io.Input;
+import com.jengine.engine.physics.Collision;
 
 public abstract class Component {
-	protected Entity entity;
+	public Entity entity;
 	protected Input input;
 
 	public Component(Entity e, Input i) {
@@ -15,4 +16,8 @@ public abstract class Component {
 	public abstract void stop();
 
 	public abstract void update();
+	
+	public void OnCollision(Collision other) {
+		
+	}
 }

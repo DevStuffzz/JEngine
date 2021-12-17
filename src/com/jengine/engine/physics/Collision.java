@@ -1,9 +1,11 @@
-package com.jengine.engine.ecs;
+package com.jengine.engine.physics;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jengine.engine.ecs.Component;
+import com.jengine.engine.ecs.Entity;
 import com.jengine.engine.io.Input;
 
 public class Collision extends Component {

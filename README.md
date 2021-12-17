@@ -5,11 +5,9 @@ A simple java Game Engine
 # Examples
 
 1. Pong Clone
-https://github.com/DevStuffzz/Pong
+https://github.com/DevStuffzz/Pong (Deprecated)
 
 # Use
 
-1. Clone the repository 
-(git clone https://github.com/DevStuffzz/Pong)
-
-2. Use the src folder in your project
+1. Download a Release
+2. Include the .jar into your project

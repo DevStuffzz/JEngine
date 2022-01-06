@@ -2,38 +2,34 @@ package com.jengine.engine.ecs;
 
 import com.jengine.engine.io.Color;
 import com.jengine.engine.io.Input;
-import com.jengine.engine.io.Texture;
 
 /**
  * 
  * @author Corey Beaver
  *
- * This component is the only way to render a texture, but also handles colors
+ * This component will render a circle with a given color and radius
  */
-public class SpriteRenderer extends Component {
+public class CircleRenderer extends Component {
 
-	public Texture sprite;
+	public float Radius;
 	public Color color;
 	
-	public boolean colored;
-	
-	public SpriteRenderer(Entity e, Input i, Texture sprite) {
+	/**
+	 * Constructor for the Circle Renderer
+	 * 
+	 * @param e The Entity
+	 * @param i The Input
+	 * @param radius Radius you want the circle to be
+	 * @param color Color you want the circle to be
+	 */
+	public CircleRenderer(Entity e, Input i, float radius, Color color) {
 		super(e, i);
-		this.sprite = sprite;
-		this.colored = false;
 		// TODO Auto-generated constructor stub
-	}
-
-	
-	
-	public SpriteRenderer(Entity e, Input i, Color color) {
-		super(e, i);
+		entity.width = (int)radius*2;
+		entity.height = (int)radius*2;
+		this.Radius = radius;
 		this.color = color;
-		this.colored = true;
 	}
-
-
-
 
 	/**
 	 * All components have a start method, there is none in any renderers

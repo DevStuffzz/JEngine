@@ -6,52 +6,60 @@ import java.util.List;
 import com.jengine.engine.io.Input;
 import com.jengine.engine.io.Texture;
 
-public class Animation extends Component {
-	private long time = 1;
-	
+/**
+ * 
+ * @author Corey Beaver
+ *
+ *         This Component holds a list of textures and alternates between them,
+ *         giving the illusion of movement
+ *
+ */
+public class Animation {
+	public int time = 1;
+	private int current = 0;
+
 	private List<Texture> textureAtlas;
 	private int state;
-	
-	public Animation(Entity e, Input i) {
-		super(e, i);
+
+	Animator anim;
+
+	/**
+	 * Creates an animation
+	 * 
+	 * @param e the entity
+	 * @param i the input
+	 */
+	public Animation(Animator animator) {
 		this.textureAtlas = new ArrayList<Texture>();
 		this.state = 0;
+		anim = animator;
 	}
-	
 
+	/**
+	 * Add a texture to the list
+	 * 
+	 * @param texture adds this texture to the list
+	 */
 	public void addSprite(Texture texture) {
 		this.textureAtlas.add(texture);
 	}
-	
-	@Override
-	public void start() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void stop() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void update() {
-		try {
-			Thread.sleep(time);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+
+		if (current >= time) {
+			state++;
+			if (state > textureAtlas.size() - 1)
+				state = 0;
+
+			SpriteRenderer spr = anim.entity.getComponent(SpriteRenderer.class);
+
+			if (spr != null) {
+				spr.sprite = textureAtlas.get(state);
+			}
+			current = 0;
 		}
-		
-		state++;
-		if(state > textureAtlas.size()-1) state = 0;
-		
-		SpriteRenderer spr = this.entity.getComponent(SpriteRenderer.class);
-		
-		if(spr != null) {
-			spr.setSprite(textureAtlas.get(state));
-		}
+		current++;
 	}
 
 }

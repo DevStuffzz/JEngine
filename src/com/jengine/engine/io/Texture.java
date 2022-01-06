@@ -1,16 +1,26 @@
 package com.jengine.engine.io;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class Texture {
 	private static Map<String, Texture> textureAtlas = new HashMap<String, Texture>();
 	
-	public Image image;
+	public BufferedImage image;
 	private Texture(String location) {
-		this.image = new ImageIcon(location).getImage();
+		try {
+			this.image = ImageIO.read(new File(location));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.err.printf("Cannot open %s\n", location);
+		}
+;
 	}
 	
 	public static Texture create(String location) {

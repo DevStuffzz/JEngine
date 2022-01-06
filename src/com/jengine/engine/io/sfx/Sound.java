@@ -6,17 +6,14 @@ import java.net.URL;
 
 import javax.sound.sampled.*;
 
-import com.jengine.engine.common.JTool;
 
 public class Sound{
-	private Volume volume;
 	private String location;
 
 	public Clip clip;
 
-	public Sound(Volume volume, String location)  {
+	public Sound(String location)  {
 		super();
-		this.volume = volume;
 		this.location = location;
 
 		

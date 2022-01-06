@@ -7,8 +7,21 @@ import java.awt.GraphicsEnvironment;
 
 import javax.swing.*;
 
+/**
+ * 
+ * @author Corey Beaver
+ *
+ * The Display class is cross-platform for Windows, MacOS, and all linux distros
+ * creates a window that we can physically see and render to
+ */
 public class Display extends JFrame{
 	
+	/**
+	 * 
+	 * @author Corey Beaver
+	 *
+	 * The Type of display
+	 */
 	public static enum DisplayType {
 		Windowed, WindowedFullscreen, Fullscreen
 	}
@@ -19,19 +32,27 @@ public class Display extends JFrame{
 		this.setBounds(width, height, 0, 0);
 		this.setLocation(width / 2, (height / 2) + 45);
 		this.setTitle(title);
+		this.setBackground(Color.black);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBackground(new Color(0, 138, 197));
 
 		this.setVisible(true);
 
 		this.pack();
 	}
 	
+	/**
+	 * 
+	 * @param type The type to set it to
+	 */
 	public void setType(DisplayType type) {
 		this.type = type;
 		resize();
 	}
 
+	/**
+	 * Reszes the display
+	 * 
+	 */
 	private void resize() {
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		int width = gd.getDisplayMode().getWidth();
@@ -46,6 +67,10 @@ public class Display extends JFrame{
 		}
 	}
 	
+	/**
+	 * Sets the icon
+	 * @param icon texture to set as the icon
+	 */
 	public void SetIcon(Texture icon) {
 		this.setIconImage(icon.image);
 	}

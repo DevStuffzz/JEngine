@@ -1,8 +1,16 @@
 package com.jengine.engine.ecs;
 
 import com.jengine.engine.io.Input;
-import com.jengine.engine.physics.Collision;
+import com.jengine.engine.physics.Collider;
+import com.jengine.engine.physics.SquareCollider;
 
+/**
+ * 
+ * @author Corey Beaver
+ *
+ * The Abstract Component class
+ * All built in and client components will extend this class
+ */
 public abstract class Component {
 	public Entity entity;
 	protected Input input;
@@ -17,7 +25,7 @@ public abstract class Component {
 
 	public abstract void update();
 	
-	public void OnCollision(Collision other) {
+	public void OnCollision(Collider other) {
 		
 	}
 }

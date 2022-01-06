@@ -8,9 +8,9 @@ public class Vector2 {
 	public static final int X = 0;
 	public static final int Y = 1;
 	
-	public double x, y;
+	public float x, y;
 
-	public Vector2(double x, double y) {
+	public Vector2(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -32,6 +32,10 @@ public class Vector2 {
 		return null;
 	}
 	
+	public int integralForm(int side) {
+		if(side == X) return (int)x;
+		return (int)y;
+	}
 
 	
 	@Override

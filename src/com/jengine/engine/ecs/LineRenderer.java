@@ -2,38 +2,28 @@ package com.jengine.engine.ecs;
 
 import com.jengine.engine.io.Color;
 import com.jengine.engine.io.Input;
-import com.jengine.engine.io.Texture;
+import com.jengine.engine.math.Vector2;
 
 /**
  * 
  * @author Corey Beaver
  *
- * This component is the only way to render a texture, but also handles colors
+ * Line Renderer component
+ * Has two vec2's and a color
+ * renders a line with its width
  */
-public class SpriteRenderer extends Component {
-
-	public Texture sprite;
+public class LineRenderer extends Component {
+	public Vector2 point1, point2;
 	public Color color;
 	
-	public boolean colored;
+	public int Width = 1;
 	
-	public SpriteRenderer(Entity e, Input i, Texture sprite) {
+	public LineRenderer(Entity e, Input i, Vector2 point1, Vector2 point2, Color color) {
 		super(e, i);
-		this.sprite = sprite;
-		this.colored = false;
-		// TODO Auto-generated constructor stub
-	}
-
-	
-	
-	public SpriteRenderer(Entity e, Input i, Color color) {
-		super(e, i);
+		this.point1 = point1;
+		this.point2 = point2;
 		this.color = color;
-		this.colored = true;
 	}
-
-
-
 
 	/**
 	 * All components have a start method, there is none in any renderers
@@ -60,5 +50,4 @@ public class SpriteRenderer extends Component {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
